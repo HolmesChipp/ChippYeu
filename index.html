@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chipp Iuuu</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        h1 {
+            color: deeppink; /* Dark pink color */
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            background-color: white;
+            border: 2px solid deeppink; /* Dark pink color */
+            color: deeppink; /* Dark pink color */
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+            border-radius: 12px; /* Rounded corners */
+        }
+        .button:hover {
+            background-color: deeppink; /* Dark pink color */
+            color: white;
+        }
+        .gif-container {
+            margin-top: 20px;
+        }
+        .gif-container img {
+            border-radius: 12px; /* Rounded corners for the gif */
+        }
+    </style>
+</head>
+<body>
+    <h1>Em đi chơi với anh nhé Chipp iuuu</h1>
+    <div class="button-container">
+        <button id="daaaa-button" class="button">Daaaaa</button>
+        <button id="khong-button" class="button">Không anh oi</button>
+    </div>
+    <div class="gif-container">
+        <img src="cat.gif" alt="Pleease gif" width="300">
+    </div>
+    <script>
+        document.getElementById('khong-button').addEventListener('click', function() {
+            var daaaaButton = document.getElementById('daaaa-button');
+            var currentFontSize = window.getComputedStyle(daaaaButton).fontSize;
+            var newFontSize = parseFloat(currentFontSize) + 2;
+            daaaaButton.style.fontSize = newFontSize + 'px';
+        });
+
+        document.getElementById('daaaa-button').addEventListener('click', function() {
+            window.location.href = 'page2.html';
+        });
+    </script>
+</body>
+</html>

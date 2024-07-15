@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang 4</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: deeppink;
+            font-size: 24px;
+        }
+        .food-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .food-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            width: 45%; /* Điều chỉnh chiều rộng của từng ảnh */
+        }
+        .food-option img {
+            width: 200px; /* Mở rộng thêm chiều rộng */
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid deeppink;
+            padding: 0.3cm; /* Cách viền ảnh 0.5 cm */
+            background-color: pink; /* Màu nền của padding */
+        }
+        .food-option label {
+            margin: 10px 0;
+            font-size: 18px;
+            color: deeppink;
+        }
+        .submit-button {
+            background-color: white;
+            border: 2px solid deeppink;
+            color: deeppink;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+        .submit-button:hover {
+            background-color: deeppink;
+            color: white;
+        }
+    </style>
+    <script>
+        function downloadSelectedFood() {
+            var selectedFoods = [];
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(function(checkbox) {
+                selectedFoods.push(checkbox.value);
+            });
+            if (selectedFoods.length > 0) {
+                var blob = new Blob([selectedFoods.join('\n')], { type: 'text/plain' });
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement("a");
+                a.href = url;
+                a.download = "Food.txt";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } else {
+                alert("Vui lòng chọn ít nhất một món!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Emm bé Chipp mún ăngg gì nàoo?</h1>
+
+    <div class="food-options">
+        <div class="food-option">
+            <img src="1.jpeg" alt="Bánh tráng trộn">
+            <label>Bánh tráng trộnn</label>
+            <input type="checkbox" value="Bánh tráng trộn">
+        </div>
+
+        <div class="food-option">
+            <img src="2.jpg" alt="Xiên bửn">
+            <label>Xiên bửnn</label>
+            <input type="checkbox" value="Xiên bửn">
+        </div>
+
+        <div class="food-option">
+            <img src="3.jpg" alt="Ốc">
+            <label>Ốc</label>
+            <input type="checkbox" value="Ốc">
+        </div>
+
+        <div class="food-option">
+            <img src="4.jpg" alt="Mỳ cay">
+            <label>Mỳ cayyy</label>
+            <input type="checkbox" value="Mỳ cay">
+        </div>
+    </div>
+
+    
+    <button class="submit-button" onclick="downloadSelectedFood(); window.location.href='page5.html';">Tiếpp UwU</button>
+
+</body>
+</html>

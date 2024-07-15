@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang 6</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: deeppink;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .activity-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .activity-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            width: 30%;
+        }
+        .activity-option img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid deeppink;
+            padding: 0.3cm;
+            background-color: pink;
+        }
+        .activity-option label {
+            margin: 10px 0;
+            font-size: 18px;
+            color: deeppink;
+        }
+        .submit-button {
+            background-color: white;
+            border: 2px solid deeppink;
+            color: deeppink;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+        .submit-button:hover {
+            background-color: deeppink;
+            color: white;
+        }
+    </style>
+    <script>
+        function downloadAndGoToNext() {
+            // Tạo nội dung tệp tin để tải xuống
+            var content = "Dưới đây là các hoạt động đã chọn:\n";
+            var checkboxes = document.querySelectorAll('.activity-option input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    content += checkbox.value + "\n";
+                }
+            });
+
+            // Tạo một đối tượng Blob (Binary Large Object) từ nội dung
+            var blob = new Blob([content], { type: 'text/plain' });
+
+            // Tạo một đường dẫn URL cho Blob
+            var url = URL.createObjectURL(blob);
+
+            // Tạo một phần tử <a> ẩn để tải xuống
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'Dichoi.txt';
+            document.body.appendChild(a);
+            a.click();
+
+            // Xóa đối tượng <a> và URL
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            // Chuyển hướng sang trang 7
+            window.location.href = 'page7.html';
+        }
+    </script>
+</head>
+<body>
+    <h1>Bé Chipp mún anh đưa đi âuuuu <3</h1>
+
+    <div class="activity-options">
+        <div class="activity-option">
+            <img src="trochoi.jpeg" alt="Khu trò chơi">
+            <label>Khu trò chơi</label>
+            <input type="checkbox" value="Khu trò chơi">
+        </div>
+
+        <div class="activity-option">
+            <img src="xemfilm.jpeg" alt="Xemm filmmm :333">
+            <label>Xemm filmmm :333</label>
+            <input type="checkbox" value="Xem film">
+        </div>
+
+        <div class="activity-option">
+            <img src="totuong.jpg" alt="Tô tượngg">
+            <label>Tô tượngg</label>
+            <input type="checkbox" value="Tô tượng">
+        </div>
+
+        <div class="activity-option">
+            <img src="Congvien.jpg" alt="Côngg viênnn">
+            <label>Côngg viênnn</label>
+            <input type="checkbox" value="Công viên">
+        </div>
+    </div>
+
+    <button class="submit-button" onclick="downloadAndGoToNext()">Dơ ennn :></button>
+</body>
+</html>

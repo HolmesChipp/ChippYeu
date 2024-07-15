@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang 5</title>
+    <style>
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: deeppink;
+            font-size: 24px;
+        }
+        .food-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .food-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            width: 30%; /* Sửa lại chiều rộng để hiển thị 3 ảnh trên mỗi hàng */
+        }
+        .food-option img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid deeppink;
+            padding: 0.3cm;
+            background-color: pink;
+        }
+        .food-option label {
+            margin: 10px 0;
+            font-size: 18px;
+            color: deeppink;
+        }
+        .submit-button {
+            background-color: white;
+            border: 2px solid deeppink;
+            color: deeppink;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+        .submit-button:hover {
+            background-color: deeppink;
+            color: white;
+        }
+    </style>
+    <script>
+        function downloadSelectedItemsAndSubmit() {
+            // Lấy danh sách các món đã chọn
+            var selectedItems = [];
+            var checkboxes = document.querySelectorAll('.food-option input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    selectedItems.push(checkbox.value);
+                }
+            });
+
+            // Tạo nội dung tệp tin để tải xuống
+            var content = selectedItems.join('\n');
+
+            // Tạo một đối tượng Blob (Binary Large Object) từ nội dung
+            var blob = new Blob([content], { type: 'text/plain' });
+
+            // Tạo một đường dẫn URL cho Blob
+            var url = URL.createObjectURL(blob);
+
+            // Tạo một phần tử <a> ẩn để tải xuống
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'Trangmieng.txt';
+            document.body.appendChild(a);
+            a.click();
+
+            // Xóa đối tượng <a> và URL
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            // Chuyển hướng sang trang page6.html
+            window.location.href = 'page6.html';
+        }
+    </script>
+</head>
+<body>
+    <h1>Còn món tráng miệng nữa nìiii :333</h1>
+
+    <div class="food-options">
+        <div class="food-option">
+            <img src="Kem.jpg" alt="Kem">
+            <label>Kemmm</label>
+            <input type="checkbox" value="Kem">
+        </div>
+
+        <div class="food-option">
+            <img src="Banhca.jpg" alt="Bánh cá">
+            <label>Bánh cáaa</label>
+            <input type="checkbox" value="Bánh cá">
+        </div>
+
+        <div class="food-option">
+            <img src="che.jpeg" alt="Chè">
+            <label>Chèee</label>
+            <input type="checkbox" value="Chè">
+        </div>
+
+        <div class="food-option">
+            <img src="Tatua.jpg" alt="Tà tữaa">
+            <label>Tà tữaaa</label>
+            <input type="checkbox" value="Tà tữaa">
+        </div>
+
+        <div class="food-option">
+            <img src="Tauhu.jpg" alt="Tàu hũ">
+            <label>Tàu hũuu</label>
+            <input type="checkbox" value="Tàu hũ">
+        </div>
+
+        <div class="food-option">
+            <img src="xiupao.jpeg" alt="Bánh xíuuu páooo">
+            <label>Bánh xíuuu páooo</label>
+            <input type="checkbox" value="Bánh xíuuu páooo">
+        </div>
+    </div>
+
+    <button class="submit-button" onclick="downloadSelectedItemsAndSubmit()">Ghi nhận ạaa <33</button>
+</body>
+</html>
